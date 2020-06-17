@@ -1,0 +1,124 @@
+<!--
+        <div id="myModal" class="modal" ref="entityModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" @click="closeModal()">&times;</span>
+                    <h2>Modal Header</h2>
+                </div>
+                <div class="flex-container">
+                    <label for="">Entity name:</label>
+                    <input type="text" name="" id="" v-model="temp.tempEntity.name">
+                </div>
+                
+                <div v-if="!isStringBlank(temp.tempEntity.name)">
+                    <label for="">Entity permissions</label>
+                    <div>
+                        <label for="">Add new Permission</label>
+                        <div>
+                            <input type="text" name="" id="" v-model="temp.tempPerm.name">
+                            <button v-if="!isStringBlank(temp.tempPerm.name)" @click="temp.tempEntity.perms = addTempPerm(temp.tempEntity.perms,createEntityPermitionString(parseToDBFormat(temp.tempEntity.name), parseToDBFormat(temp.tempPerm.name)))">Add</button>
+                        </div>
+                    </div>
+                    <div>
+                        <ul v-for="(perm,index) in mapToEntityPermsArrays(temp.tempEntity.perms).map(e => e[1])" :key="index">
+                            <li>{{parseToDisplayFormat(perm)}}</li>
+                        </ul>
+                    </div>
+                    <div v-if="temp.tempEntity.perms.length > 0">
+                        <button @click="addNewEntity(temp.tempEntity)">Add new entity</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <div>
+            <button @click="openModal()">Click Me</button>
+        </div>
+        <!--
+        <div>
+            <div class="table-wrapper">
+                <table>
+                    <col>
+                        <tr>
+                            <th rowspan="2">Rols</th>
+                            <th 
+                                v-for="entity in entitys" :key="entity.id" :colspan="entity.perms.length"  
+                                scope="colgroup" @mouseenter="makeCheckboxVisible('checkbox' + entity.id)" 
+                                @mouseleave="makeCheckboxInvisible('checkbox' + entity.id)"
+                            >
+                                    <input 
+                                        class="tableCheckbox" 
+                                        type="checkbox" name="" :id="'checkbox' + entity.id"   
+                                        :checked="!isAllEntityPermissionsAdded(entity.perms, rols)"  
+                                        @click="alternateAllEntityPermissions(entity.perms, rols)"
+                                    >
+                                        {{parseToDisplayFormat(entity.name)}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th 
+                                v-for="(perm,index) in mapToEntityPermsArrays(permissions).map(e => e[1])" :key="index" 
+                                @mouseenter="makeCheckboxVisible('checkbox' + perm + index)"
+                                @mouseleave="makeCheckboxInvisible('checkbox' + perm + index)"
+                            >
+                                <input 
+                                class="tableCheckbox" 
+                                type="checkbox" name="" :id="'checkbox' + perm + index"  
+                                :checked="isPermissionAddedInAllRols(permissions[index],rols)" 
+                                @click="alternateOnePermissionInAllRols(permissions[index],rols)"
+                            >
+                                {{parseToDisplayFormat(perm)}}
+                            </th>
+                        </tr>
+                        <tr 
+                            v-for="rol in rols" :key="rol._id">
+                            <th 
+                            scope="row" 
+                            @mouseenter="makeCheckboxVisible('checkbox' + rol._id)" 
+                            @mouseleave="makeCheckboxInvisible('checkbox' + rol._id)"
+                            >
+                                <input 
+                                    class="tableCheckbox" 
+                                    type="checkbox" name="" :id="'checkbox' + rol._id"  
+                                    :checked="hasAllpermissions(rol.permissions,permissions)" 
+                                    @click="rol.permissions = alternateAllPermission(rol.permissions,permissions)"
+                                >
+                                {{rol.name}}
+                            </th>
+                            <td 
+                                v-for="(perms,index) in mapToEntityPermsArrays(permissions).map(e => e[1])" :key="index" 
+                                @click="rol.permissions = alternatePermission(rol.permissions,permissions[index])"
+                            >
+                                {{hasPermition(rol.permissions,permissions[index])}}
+                            </td>
+                        </tr>
+                        <tr class="display-none" ref="inputTr">
+                            <td :colspan="mapToEntityPermsArrays(permissions).map(e => e[1]).length">
+                                <label for="">Rol Name: </label>
+                                <input type="text" name="" id="" v-model="temp.tempRol.name">
+                            </td>
+                            <td>
+                                <button 
+                                    ref="addNewRolbtn" 
+                                    @click="addNewRol('r' + rols.length + 1,temp.tempRol.name,permissions,rols,'READ')"
+                                >
+                                    Add
+                                </button>
+                            </td>
+                        </tr>
+                        <tr 
+                            ref="addNewRol"
+                        >
+                            <td 
+                                :colspan="mapToEntityPermsArrays(permissions).map(e => e[1]).length + 1" 
+                                @click="showNewRolInput()"
+                            >
+                                <label for="">Add new rol</label>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+            {{test1}}
+            {{test2}}
+        </div>
+        -->
